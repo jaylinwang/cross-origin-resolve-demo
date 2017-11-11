@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    打开控制台查看，关注3点：
+  </p>
+  <p>
+    1. 控制台有跨域的错误日志，
+  </p>
+  <p>
+    2. http://localhost:4000/count 请求状态是成功，且 response 中有数据
+  </p>
+  <p>
+    3. xhr 屏蔽了成功状态
+  </p>
+  <script>
+    (function () {
+      var xhr = new XMLHttpRequest()
+      xhr.open('get', 'http://localhost:4000/count')
+      xhr.onreadystatechange = function () {
+        console.log(xhr)
+      }
+      xhr.send()
+    })()
+  </script>
+</body>
+</html>
