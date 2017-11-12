@@ -11,11 +11,29 @@ app.use(view())
 app.use(static(__dirname + 'assets'))
 app.use(router.routes())
 
+// 跨域表现
 router.get('/count', (ctx) => {
   console.log('get count ok~')
   ctx.body = {
     errcode: 0,
     count: 1
+  }
+})
+
+// 借用src/href的单向检测
+router.get('/check', (ctx) => {
+  let status = Math.random()
+  console.log('get check ok~')
+  console.log(status)
+  // console.log(ctx.cookies)
+
+  // 模仿大概率成功，小概率失败
+  if (status < 0.6) {
+    ctx.status = 200
+    ctx.body = '成功'
+  } else {
+    ctx.status = 500
+    ctx.body = '失败'
   }
 })
 
