@@ -50,6 +50,11 @@ router.get('/jsonp-error', async (ctx) => {
   await ctx.render('jsonp-error')
 })
 
+// CORS
+router.get('/cors', async (ctx) => {
+  await ctx.render('cors')
+})
+
 app.listen(3000, function () {
   console.log(`server a start on port 3000`)
 })

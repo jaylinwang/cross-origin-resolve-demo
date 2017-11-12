@@ -86,6 +86,13 @@ router.get('/jsonp/run-random', (ctx) => {
   }
 })
 
+router.all('/cors', (ctx) => {
+  ctx.set('Access-Control-Allow-Origin', 'http://localhost:3000')
+  ctx.set('Access-Control-Allow-Credentials', 'true')
+  
+  ctx.body = 'ok'
+})
+
 app.listen(4000, function () {
   console.log(`server b start on port 4000`)
 })
