@@ -13,7 +13,7 @@ app.use(static(__dirname + '/server_a/assets'))
 app.use(session({
   key: 'koa:sess', 
   httpOnly: true,
-  signed: true
+  signed: false
 }, app))
 
 app.use(router.routes())
@@ -28,8 +28,26 @@ router.get('/basic-phenomenon', async (ctx) => {
   await ctx.render('index')
 })
 
+// EmbedPing
 router.get('/img-use', async (ctx) => {
   await ctx.render('img-use')
+})
+router.get('/link-use', async (ctx) => {
+  await ctx.render('link-use')
+})
+
+// JSONP
+router.get('/jsonp-run', async (ctx) => {
+  await ctx.render('jsonp-run')
+})
+router.get('/jsonp-call', async (ctx) => {
+  await ctx.render('jsonp-call')
+})
+router.get('/jsonp-define', async (ctx) => {
+  await ctx.render('jsonp-define')
+})
+router.get('/jsonp-error', async (ctx) => {
+  await ctx.render('jsonp-error')
 })
 
 app.listen(3000, function () {

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JSONP</title>
+</head>
+<body>
+  刷新浏览器页面，观察控制台输出
+  <script>
+    var script = document.createElement('script')
+    // run-random 有50%概率返回错误信息
+    script.src = 'http://localhost:4000/jsonp/run-random'
+    script.async = true
+    script.onerror = function () {
+      console.log('jsonp error')
+    }
+    document.body.appendChild(script)
+  </script>
+</body>
+</html>
